@@ -6,9 +6,9 @@ public:
         
         vector<int> vec;
         int count =0;
-        int temp=nums[0];
         
-        for(auto i : nums) cout<<i<<" ";
+        
+        // for(auto i : nums) cout<<i<<" ";
         int j=-1;
         
         for(int i =1;i<nums.size();i++){
