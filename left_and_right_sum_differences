@@ -1,0 +1,35 @@
+class Solution {
+public:
+    vector<int> leftRigthDifference(vector<int>& nums) {
+        vector<int> left,right,ans;
+
+        int temp=0;
+        left.push_back(0);
+        right.push_back(0);
+
+        for(int i=0;i<nums.size()-1;i++){
+            temp+=nums[i];
+
+            left.push_back(temp);
+        }
+
+        temp=0;
+
+        for(int i=nums.size()-1;i>0;i--){
+            temp+=nums[i];
+
+            right.push_back(temp);
+        }
+
+        reverse(right.begin(),right.end());
+
+        for(int i=0;i<nums.size();i++){
+            ans.push_back(abs(left[i]-right[i]));
+        }
+
+        return ans;
+
+
+        
+    }
+};
