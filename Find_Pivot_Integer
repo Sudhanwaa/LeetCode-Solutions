@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int pivotInteger(int n) {
+
+        if(n==1) return 1;
+
+        int temp=0;
+
+        vector<int> prefix,nums;
+
+        for(int i=1;i<=n;i++){
+            temp+=i;
+            nums.push_back(i);
+            prefix.push_back(temp);
+        }
+
+        int idx=-1,ans=-1;
+
+        for(int i=0;i<prefix.size();i++){
+            if(i>0){
+                if(prefix[i]==prefix[prefix.size()-1]-prefix[i-1]) ans=nums[i];
+            }
+        }
+
+
+        return ans;
+
+
+
+
+    }
+};
