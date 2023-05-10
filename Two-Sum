@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> vec;
+        vector<int> :: iterator itr,ptr;
+        int sum=0;
+        
+        for(itr=nums.begin(); itr<nums.end(); itr++){
+            sum=0;
+            for(ptr=itr+1;ptr<nums.end();ptr++){
+                sum=(*itr) + (*ptr);
+                if(sum==target) {
+                    vec.push_back(itr-nums.begin());
+                    vec.push_back(ptr-nums.begin());
+                }
+            }
+        }
+        
+        return vec;
+    }
+};
