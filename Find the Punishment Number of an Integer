@@ -1,0 +1,30 @@
+class Solution {
+public:
+    
+    bool dfs(const string& str, int index, int target) {
+    if (target == 0 && index == str.length()) {
+        return true;
+    }
+    if (target < 0 || index == str.length()) {
+        return false;
+    }
+    for (int i = index + 1; i <= str.length(); i++) {
+        int num = stoi(str.substr(index, i - index));
+        if (dfs(str, i, target - num)) {
+            return true;
+        }
+    }
+    return false;
+}
+    int punishmentNumber(int n) {
+        int ans=0;
+        for(int i =1;i<n+1;i++){
+            if(dfs(to_string(i*i),0,i)){
+                ans+=i*i;
+            }
+        }
+        
+        return ans;
+        
+    }
+};
