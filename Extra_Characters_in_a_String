@@ -1,0 +1,30 @@
+class Solution {
+    unordered_set<string>st;
+    bool find(string str){
+        if(st.find(str) != st.end())return true;
+        return false;
+    }
+    int minExtra(string s,vector<string>&dictionary,int idx,vector<int>&dp){
+        if(idx >= s.size())return 0;
+        if(dp[idx] != -1)return dp[idx];
+        int minChar = INT_MAX;
+        for(int i = 1; i <= s.size(); i++){
+            int remChar = 0;
+            string str = s.substr(idx,i);
+            if(!find(str)){
+               remChar += str.size();
+            }
+            remChar = remChar + minExtra(s,dictionary,idx+i,dp);
+            minChar = min(minChar,remChar);
+        }
+        return dp[idx] = minChar;
+    }
+public:
+    int minExtraChar(string s, vector<string>& dictionary) {
+        vector<int>dp(s.size(),-1);
+        for(auto i : dictionary){
+            st.insert(i);
+        }
+        return minExtra(s,dictionary,0,dp);
+    }
+};
