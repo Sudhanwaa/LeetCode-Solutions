@@ -1,0 +1,46 @@
+class Solution {
+    public String smallestString(String s) {
+        int foundNonA = 0;
+        int length = s.length();
+        StringBuilder result = new StringBuilder();
+        int isFound = 0;
+        
+        for (int i = 0; i < length; i++) {
+            char currentChar = s.charAt(i);
+            if (currentChar != 'a') {
+                foundNonA = 1;
+                for (int j = i; j < length; j++) {
+                    char nonAChar = s.charAt(j);
+                    if (nonAChar != 'a') {
+                        int less = nonAChar - 1;
+                        char lessChar = (char) less;
+                        result.append(lessChar + "");
+                        if (j == length - 1) {
+                            isFound = 1;
+                            break;
+                        }
+                    } else {
+                        for (int k = j; k < length; k++) {
+                            result.append(s.charAt(k) + "");
+                        }
+                        isFound = 1;
+                        break;
+                    }
+                }
+            } else {
+                result.append(currentChar + "");
+            }
+            if (isFound == 1) {
+                break;
+            }
+        }
+        
+        if (foundNonA == 1) {
+            return result.toString();
+        } else {
+            String str = s.substring(0, length - 1);
+            str = str + "z";
+            return str;
+        }
+    }
+}
