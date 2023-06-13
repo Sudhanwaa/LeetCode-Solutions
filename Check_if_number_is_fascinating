@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isFascinating(int n) {
+
+
+        string a =to_string(n*2);
+        string b =to_string(n*3);
+
+        string temp=to_string(n) + a+ b;
+
+        
+        string check="123456789";
+
+        for(auto i:check){
+            int count=0;
+            for(auto j:temp){
+                if(i==j) count++;
+            }
+            if(count>1 || count==0) return false;
+            
+        }
+
+        return true;
+
+
+    }
+};
